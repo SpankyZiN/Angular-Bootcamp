@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { Login } from './login/login';
+import { Pub } from './portals/pub/pub';
 import { Main } from './portals/main/main';
 
 export const routes: Routes = [
-    { path: '', component: Login},
+    { path: '', component: Pub},
     { path: 'main', component: Main},
 ];
 
