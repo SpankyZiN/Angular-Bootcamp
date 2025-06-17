@@ -1,0 +1,6 @@
+<h1>Clientes</h1>
+  <p-button icon="pi pi-plus" label="Agregar" (click)="onStartAddAction($event)"></p-button>
+</div>
+
+
+<app-customer-table [list]="customerList" (action)="onListAction($event)"> </app-customer-table>

@@ -48,10 +48,7 @@
 .p-menubar .p-menubar-root-list {
   display: flex;
   justify-content: center;
-  gap: 3rem !important; /* Espacio entre Inicio, Clientes, etc. */
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  gap: 2rem !important; 
 }
 
 /* Estilo a los ítems */
