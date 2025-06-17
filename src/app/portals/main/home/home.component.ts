@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
     this.items = [
       { label: 'Inicio', icon: 'pi pi-home', routerLink: '/home' },
-      { label: 'Clientes', icon: 'pi pi-users', routerLink: '/clientes' },
+      { label: 'Clientes', icon: 'pi pi-users', routerLink: '/home/clientes' },
       { label: 'Cuentas', icon: 'pi pi-wallet', routerLink: '/cuentas' },
       { label: 'Transferencias', icon: 'pi pi-send', routerLink: '/transferencias' },
     ];
