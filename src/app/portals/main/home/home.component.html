@@ -1,0 +1,19 @@
+<div class="main-container">
+  <!-- Header -->
+  <div class="header">
+    <div class="title">Mini-Bank</div>
+    <div class="user-info">
+      <span class="welcome">Hola, {{ nombreUsuario }}</span>
+      <button pButton icon="pi pi-sign-out" class="p-button-rounded p-button-text" (click)="logout()"></button>
+    </div>
+  </div>
+
+  <!-- Menú principal -->
+  <p-menubar [model]="items" class="main-menubar"></p-menubar>
+
+  <!-- Contenido -->
+  <div class="content">
+  </div>
+</div>
+
+

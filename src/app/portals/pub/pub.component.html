@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="left-panel">
+    <img src="https://images.unsplash.com/photo-1508923567004-3a6b8004f3d9" alt="Imagen ilustrativa" />
+  </div>
+
+  <div class="right-panel">
+    <div class="login-form">
+      <h2>Iniciar sesión</h2>
+      <input [(ngModel)]="username" placeholder="Usuario" />
+      <input [(ngModel)]="password" type="password" placeholder="Contraseña" />
+      <button (click)="login()">Ingresar</button>
+      <p class="error">{{message}}</p>
+    </div>
+  </div>
+</div>
