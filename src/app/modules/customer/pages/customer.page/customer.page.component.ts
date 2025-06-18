@@ -1,50 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import {TableModule} from 'primeng/table';
-import {CustomerTableComponent} from '../../components/customer-table/customer-table.component';
-import {CustomerService} from '../../services/customer.service';
-import {Button} from 'primeng/button';
-import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
-import { CustomerAddDialog } from '../../dialogs/add/customer-add/customer-add.component';
-import {Customer} from '../../store/customer.api';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CustomerService } from '../../services/customer.service';
+import { Customer } from '../../store/customer.api';
+import { CustomerTableComponent } from '../../components/customer-table/customer-table.component';
 
 @Component({
-  selector: 'app-customer.page',
-  imports: [
-    TableModule,
-    CustomerTableComponent,
-    Button,
-  ],
+  selector: 'app-customer-page',
+  standalone: true,
+  imports: [CommonModule, CustomerTableComponent],
   templateUrl: './customer.page.component.html',
-  styleUrl: './customer.page.component.css'
+  styleUrls: ['./customer.page.component.css'],
 })
 export class CustomerPageComponent {
+  customers: Customer[] = [];
 
-  customerList: Customer[] = [];
-  ref: DynamicDialogRef | null = null;
-
-  constructor(private customerService: CustomerService, private dialogService: DialogService) {
+  constructor(private customerService: CustomerService) {
+    this.customers = this.customerService.getCustomerList;
   }
 
-  ngOnInit() {
-    this.customerList = this.customerService.getCustomerList;
+  onTableAction(event: any) {
+    console.log("Evento desde el hijo:", event);
   }
-
-  onStartAddAction(event?: any) {
-    const data = {
-      header: 'Agregar Cliente',
-      closable: true,
-      height: '50dvh',
-      width: '50dvh',
-    }
-    this.ref = this.dialogService.open(CustomerAddDialog, data);
-    this.ref.onClose.subscribe((result: any) => {
-        this.customerList.push(result);
-      }
-    )
-  }
-
-  onListAction(event: any) {
-    console.log("event", event);
-  }
-
 }

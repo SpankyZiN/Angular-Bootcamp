@@ -1,17 +1,16 @@
-<p-table [value]="_list" [tableStyle]="{ 'min-width': '50rem' }">
-  <ng-template #header>
+<p-table [value]="list" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
     <tr>
       <th>ID</th>
       <th>Nombre</th>
       <th>Documento</th>
     </tr>
   </ng-template>
-  <ng-template #body let-customer>
-    <tr [pSelectableRow]="customer" (click)="onRowClick(customer, $event)">
+  <ng-template pTemplate="body" let-customer>
+    <tr (click)="onRowClick(customer, $event)">
       <td>{{ customer.id }}</td>
       <td>{{ customer.name }}</td>
       <td>{{ customer.document }}</td>
-
     </tr>
   </ng-template>
 </p-table>

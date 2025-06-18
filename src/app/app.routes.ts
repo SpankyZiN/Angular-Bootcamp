@@ -6,6 +6,9 @@ import { authGuard } from './services/security/auth.guard';
 
 
 export const routes: Routes = [
+  {
+    path: '', component: Pub
+  },
     {
       path: 'home',
       loadComponent: () => import('./portals/main/home/home.component').then((m) => m.HomeComponent),
