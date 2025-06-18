@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {InputText} from 'primeng/inputtext';
 import {Button} from 'primeng/button';
 import {FormsModule} from '@angular/forms';
-import { Customer } from '../../../../store/customer.api';
+import { Customer } from '../../../store/customer.api';
 import { DynamicDialogRef} from 'primeng/dynamicdialog';
 
 @Component({

@@ -4,7 +4,7 @@ import {CustomerTableComponent} from '../../components/customer-table/customer-t
 import {CustomerService} from '../../services/customer.service';
 import {Button} from 'primeng/button';
 import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
-import { CustomerAddDialog } from '../../dialogs/add/customer-add/customer-add/customer-add.component';
+import { CustomerAddDialog } from '../../dialogs/add/customer-add/customer-add.component';
 import {Customer} from '../../store/customer.api';
 
 @Component({

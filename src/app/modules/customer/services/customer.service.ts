@@ -4,7 +4,6 @@ import {Customer} from '../store/customer.api';
 @Injectable()
 export class CustomerService {
 
-
   private customerList: Customer[] = [
     {
       id: 1,

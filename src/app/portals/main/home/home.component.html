@@ -4,15 +4,19 @@
     <div class="title">Mini-Bank</div>
     <div class="user-info">
       <span class="welcome">Hola, {{ nombreUsuario }}</span>
-      <button pButton icon="pi pi-sign-out" class="p-button-rounded p-button-text" (click)="logout()"></button>
+      <button pButton icon="pi pi-sign-out" class="p-button-rounded p-button-text" style="cursor: pointer;" (click)="logout()"></button>
     </div>
   </div>
-
-  <div class="body">
-  <p-menubar [model]="items" class="main-menubar"></p-menubar>
+  <div class="content">
+    <div class="sidebar">
+      <ul>
+            <p-menubar [model]="items" class="main-menubar"></p-menubar>
+      </ul>
+    </div>
   </div>
+    <router-outlet></router-outlet>
 </div>
-<!-- <div class="footer">
-  <span>© 2023 Mini-Bank. Todos los derechos reservados.</span> -->
+
+
 
 
