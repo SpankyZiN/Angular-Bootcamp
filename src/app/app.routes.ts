@@ -1,8 +1,7 @@
-import { Routes } from '@angular/router';
-import { Pub } from './portals/pub/pub.component';
-import { HomeComponent } from './portals/main/home/home.component';
-import { CustomerTableComponent } from './modules/customer/components/customer-table/customer-table.component';
-import { authGuard } from './services/security/auth.guard';
+import {Routes} from '@angular/router';
+import {authGuard} from './services/security/auth.guard';
+import {CustomerService} from './modules/customer/services/customer.service';
+import {Pub} from './portals/pub/pub.component';
 
 
 export const routes: Routes = [
@@ -16,9 +15,21 @@ export const routes: Routes = [
       children: [
         {
           path: 'clientes',
-          loadComponent: () => import('./modules/customer/components/customer-table/customer-table.component').then((m) => m.CustomerTableComponent),
+          loadComponent: () => import('../app/modules/customer/pages/customer.page/customer.page.component').then((m) => m.CustomerPage),
           canActivate: [authGuard],
         },
       ]
     },
-];
+     {
+      path: '',
+      redirectTo: 'home',
+      pathMatch: 'full'
+    },
+    {
+      path: '**',
+      redirectTo:
+        'login'
+    }
+  ]
+;
+

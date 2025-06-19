@@ -36,3 +36,27 @@
   padding: 1rem;
 }
 
+.main-menubar {
+  background-color: #2c3e50 !important;
+  border: none;
+  border-radius: 0;
+  padding: 0.75rem 1.5rem;
+  color: #ecf0f1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .main-menubar .p-menuitem-link {
+  color: #ecf0f1 !important;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+::ng-deep .main-menubar .p-menuitem-link:hover {
+  background-color: #34495e !important;
+  border-radius: 6px;
+}
+
+::ng-deep .main-menubar .p-menubar-root-list > .p-menuitem {
+  margin-right: 1rem;
+}
+
