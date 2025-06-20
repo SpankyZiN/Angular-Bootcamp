@@ -6,7 +6,12 @@ import {Pub} from './portals/pub/pub.component';
 
 export const routes: Routes = [
   {
-    path: '', component: Pub
+    path: '', component: Pub, children: [
+      {
+        path: 'login',
+        component: Pub
+      }
+    ]
   },
     {
       path: 'home',
@@ -18,18 +23,25 @@ export const routes: Routes = [
           loadComponent: () => import('../app/modules/customer/pages/customer.page/customer.page.component').then((m) => m.CustomerPage),
           canActivate: [authGuard],
         },
+
+        {
+          path: 'banks',
+          loadComponent: () => import('../app/modules/banks/pages/bank-page/bank-page.component').then((m) => m.BankPage),
+        }
+
       ]
-    },
-     {
-      path: '',
-      redirectTo: 'home',
-      pathMatch: 'full'
-    },
-    {
-      path: '**',
-      redirectTo:
-        'login'
     }
-  ]
-;
+]
+//      {
+//       path: '',
+//       redirectTo: 'home',
+//       pathMatch: 'full'
+//     },
+//     {
+//       path: '**',
+//       redirectTo:
+//         'login'
+//     }
+//   ]
+// ;
 

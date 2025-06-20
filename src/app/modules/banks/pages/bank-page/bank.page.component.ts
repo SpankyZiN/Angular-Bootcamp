@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {TableModule} from 'primeng/table';
-import {CustomerTableComponent} from '../../components/customer-table/customer-table.component';
-import {CustomerService} from '../../services/customer.service';
+import {BankTableComponent} from '../../components/customer-table/bank-table.component';
+// {CustomerService} from '../../services/bank.service';
 import {Button} from 'primeng/button';
 import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {CustomerEditDialog} from '../../dialogs/add/customer-add/customer-add.component';
-import {Customer} from '../../store/customer.api';
+import {BankEditDialog} from '../../dialogs/add/bank-add.component';
+//import {Customer} from '../../store/bank.api';
 import {ListEvent} from '../../../../shared/utils';
 import {MessageService} from 'primeng/api';
 
@@ -14,15 +14,15 @@ import {MessageService} from 'primeng/api';
   selector: 'app-customer-page',
   imports: [
     TableModule,
-    CustomerTableComponent,
+    BankTableComponent,
     Button
   ],
     providers: [CustomerService,
       DialogService,
       MessageService
     ],
-  templateUrl: './customer.page.component.html',
-  styleUrl: './customer.page.component.css'
+  templateUrl: './bank.page.component.html',
+  styleUrl: './bank.page.component.css'
 })
 export class CustomerPage implements OnInit {
 

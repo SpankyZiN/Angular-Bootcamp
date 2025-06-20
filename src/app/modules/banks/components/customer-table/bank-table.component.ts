@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TableModule} from "primeng/table";
-import {Customer} from "../../store/customer.api"
+import {Customer} from "../../store/bank.api"
 import {ListEvent} from '../../../../shared/utils';
 
 @Component({
@@ -9,16 +9,16 @@ import {ListEvent} from '../../../../shared/utils';
   imports: [
     TableModule
   ],
-  templateUrl: './customer-table.component.html',
-  styleUrl: './customer-table.component.css'
+  templateUrl: './bank-table.component.html',
+  styleUrl: './bank-table.component.css'
 })
-export class CustomerTableComponent {
+export class BankTableComponent {
 
   _list: Customer[] = [];
 
 
 
-  @Input() 
+  @Input()
   set list(value: Customer[]) {
     this._list = value;
   }

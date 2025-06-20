@@ -1,22 +1,17 @@
-<div class="main-container">
-  <!-- Header -->
-  <div class="header">
-    <div class="title">Mini-Bank</div>
-    <div class="user-info">
-      <span class="welcome">Hola, {{ nombreUsuario }}</span>
-      <button pButton icon="pi pi-sign-out" class="p-button-rounded p-button-text" style="cursor: pointer;" (click)="logout()"></button>
-    </div>
+<div class="main-layout">
+  <div class="sidebar">
+    <p-panelMenu [model]="items" [style]="{ width: '100%' }"></p-panelMenu>
   </div>
-  <div class="content">
-    <div class="sidebar">
-      <ul>
-            <p-menubar [model]="items" class="main-menubar"></p-menubar>
-      </ul>
+
+  <div class="main-content">
+    <div class="header">
+      <div class="title">Mini-Bank</div>
+      <div class="user-info">
+        <span class="welcome">Hola, {{ nombreUsuario }}</span>
+        <button pButton icon="pi pi-sign-out" class="p-button-rounded p-button-text" (click)="logout()"></button>
+      </div>
     </div>
-  </div>
+
     <router-outlet></router-outlet>
+  </div>
 </div>
-
-
-
-
