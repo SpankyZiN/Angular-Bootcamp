@@ -1,9 +1,9 @@
 <div style="display: flex; justify-content: space-between; width: 100%">
 
 
-  <h1>Clientes</h1>
+  <h1>Bancos</h1>
   <p-button icon="pi pi-plus" label="Agregar" (click)="onStartAddAction($event)"></p-button>
 </div>
 
 
-<app-customer-table [list]="customerList" (action)="onListAction($event)"> </app-customer-table>
+<app-customer-table [list]="listBanks" (action)="onListAction($event)"> </app-customer-table>

@@ -1,58 +1,57 @@
 import {Component, OnInit} from '@angular/core';
 import {TableModule} from 'primeng/table';
 import {BankTableComponent} from '../../components/customer-table/bank-table.component';
-// {CustomerService} from '../../services/bank.service';
+import {BankService} from '../../services/bank.service';
 import {Button} from 'primeng/button';
 import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {BankEditDialog} from '../../dialogs/add/bank-add.component';
+import {BankEditDialog} from '../../dialogs/edit/bank-edit.dialog';
 //import {Customer} from '../../store/bank.api';
 import {ListEvent} from '../../../../shared/utils';
 import {MessageService} from 'primeng/api';
-
+import {BankEntity} from '../../store/bank.api';
+import {BankAddDialog} from '../../dialogs/add/bank-add.component';
 
 @Component({
-  selector: 'app-customer-page',
+  selector: 'app-bank-page',
   imports: [
     TableModule,
     BankTableComponent,
     Button
   ],
-    providers: [CustomerService,
+    providers: [BankService,
       DialogService,
       MessageService
     ],
   templateUrl: './bank.page.component.html',
   styleUrl: './bank.page.component.css'
 })
-export class CustomerPage implements OnInit {
+export class BankPageComponent implements OnInit {
 
-  customerList: Customer[] = [];
+  listBanks: BankEntity[] = [];
 
   ref: DynamicDialogRef | undefined;
 
-  constructor(private customerService: CustomerService,
+  constructor(private bankService: BankService,
               private dialogService: DialogService,
               private messageService: MessageService) {
 
   }
 
   ngOnInit() {
-    this.customerList = this.customerService.getCustomerList;
+    this.loadEntities();
   }
 
   onStartAddAction(event?: any) {
     const data = {
-      header: 'Agregar Cliente',
+      header: 'Agregar Banco',
       closable: true,
       height: '50dvh',
       width: '50dvh',
       modal: true,
-          dismissableMask: false
-
     }
-    this.ref = this.dialogService.open(CustomerEditDialog, data);
+    this.ref = this.dialogService.open(BankEditDialog, data);
     this.ref.onClose.subscribe((result: any) => {
-        this.customerList.push(result);
+        //this.listBanks.push(result);
       }
     )
   }
@@ -60,7 +59,6 @@ export class CustomerPage implements OnInit {
   onListAction(event: ListEvent) {
     switch (event.type) {
       case 'selected':
-        console.log('Evento recibido:', event);
         this.messageService.add(
           {summary: `El objeto seleccionado \ ${event.value.name}`}
         )
@@ -77,28 +75,38 @@ export class CustomerPage implements OnInit {
   }
 
 
-  onEdit(value?: Customer) {
-    console.log('Editando cliente', value);
+  onEdit(value?: BankEntity) {
+    console.log('Editando Banco', value);
     const data = {
       data: {
         customer: value,
       },
-      header: 'Editar Cliente',
+      header: 'Editar Banco',
       closable: true,
       height: '50dvh',
       width: '50dvh',
     }
-    this.dialogService.open(CustomerEditDialog, data)
+    this.dialogService.open(BankEditDialog, data)
       .onClose
       .subscribe((result: any) => {
-        const newCustomerList = this.customerService.getCustomerList;
-        const newCustomer =  newCustomerList.find((customer) => customer.id === result.id);
-        if (newCustomer) {
-          newCustomer.id = result.id;
-          newCustomer.name = result.name;
-          newCustomer.document = result.document;
-        }
+        // const newGetBankList = this.bankService.getListBanks();
+        // const newCustomer =  newCustomerList.find((customer) => customer.id === result.id);
+        // if (newCustomer) {
+        //   newCustomer.id = result.id;
+        //   newCustomer.name = result.name;
+        //   newCustomer.document = result.document;
+        // }
       })
+  }
+
+  loadEntities() {
+    this.bankService.getListBanks().subscribe(
+      {
+        next: data => {
+          this.listBanks = <BankEntity[]>data
+        }
+      }
+    )
   }
 
 }

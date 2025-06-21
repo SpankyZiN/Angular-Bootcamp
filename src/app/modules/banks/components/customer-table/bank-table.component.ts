@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TableModule} from "primeng/table";
-import {Customer} from "../../store/bank.api"
+import {BankEntity} from '../../store/bank.api';
 import {ListEvent} from '../../../../shared/utils';
 
 @Component({
@@ -14,12 +14,12 @@ import {ListEvent} from '../../../../shared/utils';
 })
 export class BankTableComponent {
 
-  _list: Customer[] = [];
+  _list: BankEntity[] = [];
 
 
 
   @Input()
-  set list(value: Customer[]) {
+  set list(value: any[]) {
     this._list = value;
   }
 
@@ -38,23 +38,23 @@ export class BankTableComponent {
     );
   }
 
-  onEdit(customer: any, event: any) {
+  onEdit(bank: any, event: any) {
     event.stopPropagation();
     this.action.emit(
       {
         type: "edit",
-        value: customer
+        value: bank
       }
     );
   }
 
 
-  onDelete(customer: any, event: any) {
+  onDelete(bank: any, event: any) {
     event.stopPropagation();
     this.action.emit(
       {
         type: "delete",
-        value: customer
+        value: bank
       }
     );
   }

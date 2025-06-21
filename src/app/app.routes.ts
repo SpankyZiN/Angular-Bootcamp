@@ -1,8 +1,6 @@
 import {Routes} from '@angular/router';
 import {authGuard} from './services/security/auth.guard';
-import {CustomerService} from './modules/customer/services/customer.service';
 import {Pub} from './portals/pub/pub.component';
-
 
 export const routes: Routes = [
   {
@@ -26,22 +24,9 @@ export const routes: Routes = [
 
         {
           path: 'banks',
-          loadComponent: () => import('../app/modules/banks/pages/bank-page/bank-page.component').then((m) => m.BankPage),
+          loadComponent: () => import ('../app/modules/banks/pages/bank-page/bank.page.component').then((m) => m.BankPageComponent),
         }
 
       ]
     }
 ]
-//      {
-//       path: '',
-//       redirectTo: 'home',
-//       pathMatch: 'full'
-//     },
-//     {
-//       path: '**',
-//       redirectTo:
-//         'login'
-//     }
-//   ]
-// ;
-

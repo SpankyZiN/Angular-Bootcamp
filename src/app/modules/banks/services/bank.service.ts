@@ -6,7 +6,7 @@ import {catchError, throwError} from 'rxjs';
 export class BankService {
 
   private http = inject(HttpClient);
-  url: 'http://54.173.20.225:8080/api/Bank';
+  url = 'http://54.173.20.225:8080/api/Bank';
 
   addBank(data: any){
     return this.http.post(this.url, data, {
@@ -19,8 +19,12 @@ export class BankService {
     );
   }
 
-  listBanks() {
-    return this.http.get(this.url + '/all');
+   getListBanks() {
+    try{
+      return this.http.get(this.url + '/all');
+    }catch (err) {
+      return this.handleError(err as HttpErrorResponse);
+    }
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -28,4 +32,4 @@ export class BankService {
     return throwError(() => err);
   }
 }
-}
+

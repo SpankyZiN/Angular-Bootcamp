@@ -4,6 +4,7 @@ import {Button} from 'primeng/button';
 import {FormsModule} from '@angular/forms';
 import { BankEntity } from '../../store/bank.api';
 import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
+import {BankService} from '../../services/bank.service';
 
 @Component({
   selector: 'app-customer-add',

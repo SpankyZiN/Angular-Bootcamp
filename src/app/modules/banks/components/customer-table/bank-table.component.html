@@ -9,15 +9,17 @@
       <th></th>
     </tr>
   </ng-template>
-  <ng-template #body let-customer>
-    <tr [pSelectableRow]="customer" (click)="onRowClick(customer, $event)">
-      <td>{{ bank.id ?? 'Sin informacion' }}</td>
-      <td>{{ bank.name ?? 'Sin informacion'  }}</td>
-      <td>{{ customer.document }}</td>
+  <ng-template #body let-bank>
+    <tr [pSelectableRow]="bank" (click)="onRowClick(bank, $event)">
+      <td>{{ bank.id ?? 'Sin información ' }}</td>
+      <td>{{ bank.name ?? 'Sin información ' }}</td>
+      <td>{{ bank.phone ?? 'Sin información ' }}</td>
+      <td>{{ bank.address ?? 'Sin información ' }}</td>
+      <td>{{ bank.mail ?? 'Sin información ' }}</td>
       <td>
         <div style="display: flex; gap: 1rem">
-          <i (click)="onEdit(customer, $event)" style="cursor: pointer" class="pi pi-pencil"></i>
-          <i (click)="onDelete(customer, $event)" style="cursor: pointer" class="pi pi-trash"></i>
+          <i (click)="onEdit(bank, $event)" style="cursor: pointer" class="pi pi-pencil"></i>
+          <i (click)="onDelete(bank, $event)" style="cursor: pointer" class="pi pi-trash"></i>
         </div>
       </td>
     </tr>

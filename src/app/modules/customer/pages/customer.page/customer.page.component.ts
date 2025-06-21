@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {TableModule} from 'primeng/table';
 import {CustomerTableComponent} from '../../components/customer-table/customer-table.component';
-import {CustomerService} from '../../services/customer.service';
 import {Button} from 'primeng/button';
 import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {CustomerEditDialog} from '../../dialogs/add/customer-add/customer-add.component';
 import {Customer} from '../../store/customer.api';
 import {ListEvent} from '../../../../shared/utils';
 import {MessageService} from 'primeng/api';
+import { CustomerService } from '../../services/customer.service';
 
 
 @Component({
