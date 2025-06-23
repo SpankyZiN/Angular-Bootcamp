@@ -1,5 +1,5 @@
 export interface BankEntity {
-  id?: number;
+  id?: string;
   name?: string;
   phone?: string;
   mail?: string;

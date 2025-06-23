@@ -4,8 +4,7 @@ import {BankEntity} from '../../store/bank.api';
 import {ListEvent} from '../../../../shared/utils';
 
 @Component({
-  selector: 'app-customer-table',
-    standalone: true,
+  selector: 'app-bank-table',
   imports: [
     TableModule
   ],

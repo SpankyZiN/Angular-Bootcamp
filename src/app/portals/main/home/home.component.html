@@ -8,10 +8,11 @@
       <div class="title">Mini-Bank</div>
       <div class="user-info">
         <span class="welcome">Hola, {{ nombreUsuario }}</span>
-        <button pButton icon="pi pi-sign-out" class="p-button-rounded p-button-text" (click)="logout()"></button>
+        <div class="spacer"></div>
+        <p-menu [popup]="true" #menuRef [model]="userMenuItems"></p-menu>
+        <p-button label="Perfil" icon="pi pi-user" (click)="menuRef.toggle($event)"/>
       </div>
     </div>
-
     <router-outlet></router-outlet>
   </div>
 </div>

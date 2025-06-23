@@ -5,7 +5,6 @@ import {BankService} from '../../services/bank.service';
 import {Button} from 'primeng/button';
 import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {BankEditDialog} from '../../dialogs/edit/bank-edit.dialog';
-//import {Customer} from '../../store/bank.api';
 import {ListEvent} from '../../../../shared/utils';
 import {MessageService} from 'primeng/api';
 import {BankEntity} from '../../store/bank.api';
@@ -75,7 +74,7 @@ export class BankPageComponent implements OnInit {
   }
 
 
-  onEdit(value?: BankEntity) {
+  onEdit(value?: any) {
     console.log('Editando Banco', value);
     const data = {
       data: {
@@ -89,13 +88,6 @@ export class BankPageComponent implements OnInit {
     this.dialogService.open(BankEditDialog, data)
       .onClose
       .subscribe((result: any) => {
-        // const newGetBankList = this.bankService.getListBanks();
-        // const newCustomer =  newCustomerList.find((customer) => customer.id === result.id);
-        // if (newCustomer) {
-        //   newCustomer.id = result.id;
-        //   newCustomer.name = result.name;
-        //   newCustomer.document = result.document;
-        // }
       })
   }
 

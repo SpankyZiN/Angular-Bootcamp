@@ -15,7 +15,7 @@ export class BankService {
         'accept': '*/*'
       }
     }) .pipe(
-      catchError(this.handleError)   // maneja errores aquí
+      catchError(this.handleError)
     );
   }
 

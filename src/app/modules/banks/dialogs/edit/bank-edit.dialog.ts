@@ -4,6 +4,7 @@ import {Button} from 'primeng/button';
 import {FormsModule} from '@angular/forms';
 // import { Customer} from '../../store/bank.api';
 import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
+import { BankEntity } from '../../store/bank.api'
 
 @Component({
   selector: 'app-customer-add',
@@ -18,9 +19,11 @@ import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 export class BankEditDialog {
 
   // customer?: Customer;
+  id?: string;
   name?: string;
-  document?: string;
-  id?: number;
+  phone?: string;
+  mail?: number;
+  address?: string;
 
 
   constructor(private dialogRef : DynamicDialogRef<BankEditDialog>,
@@ -31,22 +34,25 @@ export class BankEditDialog {
   }
 
 
-
-
   save(){
-/*    let model : Customer = {
+   let model : BankEntity = {
       id: this.id,
       name: this.name,
-      document: this.document
+      phone: this.phone,
+      mail: this.mail?.toString(),
+     address: this.address
     }
 
-    this.dialogRef.close(model);*/
+    this.dialogRef.close(model);
   }
 
   assignValue(value : any){
     this.id = value.id
     this.name = value.name;
-    this.document = value.document;
+    this.phone = value.phone;
+    this.mail = value.mail;
+    this.address = value.address;
+
   }
 
 }

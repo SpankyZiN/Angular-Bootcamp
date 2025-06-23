@@ -19,9 +19,10 @@ import {BankService} from '../../services/bank.service';
 })
 export class BankAddDialog {
 
-  //customer?: Customer;
   name?: string;
-  document?: string;
+  phone?: string;
+  mail?: number;
+  address?: string;
   id?: number;
 
   model : BankEntity ={
@@ -54,7 +55,9 @@ export class BankAddDialog {
   assignValue(value : any){
     this.id = value.id
     this.name = value.name;
-    this.document = value.document;
+    this.phone = value.phone;
+    this.mail = value.mail;
+    this.address = value.address;
   }
 
 }

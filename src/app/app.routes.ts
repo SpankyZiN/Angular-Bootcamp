@@ -21,7 +21,6 @@ export const routes: Routes = [
           loadComponent: () => import('../app/modules/customer/pages/customer.page/customer.page.component').then((m) => m.CustomerPage),
           canActivate: [authGuard],
         },
-
         {
           path: 'banks',
           loadComponent: () => import ('../app/modules/banks/pages/bank-page/bank.page.component').then((m) => m.BankPageComponent),
