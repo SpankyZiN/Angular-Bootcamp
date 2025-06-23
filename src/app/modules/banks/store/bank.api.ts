@@ -5,7 +5,3 @@ export interface BankEntity {
   mail?: string;
   address?: string;
 }
-
-export interface BankAddResult {
-
-}

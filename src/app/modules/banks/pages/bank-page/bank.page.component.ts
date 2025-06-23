@@ -11,7 +11,7 @@ import {BankEntity} from '../../store/bank.api';
 import {BankAddDialog} from '../../dialogs/add/bank-add.component';
 
 @Component({
-  selector: 'app-bank-page',
+  selector: 'app-accounts-page',
   imports: [
     TableModule,
     BankTableComponent,
@@ -44,13 +44,12 @@ export class BankPageComponent implements OnInit {
     const data = {
       header: 'Agregar Banco',
       closable: true,
-      height: '50dvh',
+      height: '70dvh',
       width: '50dvh',
-      modal: true,
     }
-    this.ref = this.dialogService.open(BankEditDialog, data);
+    this.ref = this.dialogService.open(BankAddDialog, data);
     this.ref.onClose.subscribe((result: any) => {
-        //this.listBanks.push(result);
+        // this.bankList.push(result);
       }
     )
   }

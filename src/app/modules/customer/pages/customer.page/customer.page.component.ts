@@ -12,6 +12,7 @@ import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-customer-page',
+  standalone: true,
   imports: [
     TableModule,
     CustomerTableComponent,
@@ -47,7 +48,7 @@ export class CustomerPage implements OnInit {
       height: '50dvh',
       width: '50dvh',
       modal: true,
-          dismissableMask: false
+          dismissableMask: true
 
     }
     this.ref = this.dialogService.open(CustomerEditDialog, data);

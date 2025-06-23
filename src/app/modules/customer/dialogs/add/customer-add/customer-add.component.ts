@@ -24,13 +24,12 @@ export class CustomerEditDialog {
   id?: number;
 
 
-  constructor(private dialogRef : DynamicDialogRef<CustomerEditDialog>,
-              private dialogConfig : DynamicDialogConfig) {
-
-    this.assignValue(dialogConfig.data.customer);
-
+  constructor(private dialogRef: DynamicDialogRef,
+              private dialogConfig: DynamicDialogConfig) {
+    if (dialogConfig.data?.customer) {
+      this.assignValue(dialogConfig.data.customer);
+    }
   }
-
 
 
 

@@ -1,9 +1,28 @@
-<div style="display: flex; justify-content: space-between; width: 100%">
+<p-toast></p-toast>
 
+<p-treeTable [value]="accounts">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Cuenta / Movimiento</th>
+      <th>Saldo</th>
+      <th style="width: 240px">Acciones</th>
+    </tr>
+  </ng-template>
 
-  <h1>Bancos</h1>
-  <p-button icon="pi pi-plus" label="Agregar" (click)="onStartAddAction($event)"></p-button>
-</div>
-
-
-<app-bank-table [list]="listBanks" (action)="onListAction($event)"> </app-bank-table>
+  <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+    <tr>
+      <td>
+        <p-treeTableToggler [rowNode]="rowNode" />
+        {{ rowData.type }}
+      </td>
+      <td [style.color]="rowData.balance?.includes('-') ? 'red' : 'green'">
+        {{ rowData.balance || '-' }}
+      </td>
+      <td *ngIf="!rowNode.parent">
+        <button pButton class="p-button-sm p-button-text" (click)="transfer()">Transferir</button>
+        <button pButton class="p-button-sm p-button-text" (click)="share()">Compartir</button>
+        <button pButton class="p-button-sm p-button-text" (click)="more()">Más opciones</button>
+      </td>
+    </tr>
+  </ng-template>
+</p-treeTable>

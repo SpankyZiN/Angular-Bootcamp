@@ -29,7 +29,7 @@ export class HomeComponent{
     this.items = [
       { label: 'Inicio', icon: 'pi pi-home', routerLink: ['/home'] },
       { label: 'Clientes', icon: 'pi pi-users', routerLink: ['/home/clientes'] },
-      { label: 'Cuentas', icon: 'pi pi-wallet', routerLink: ['/cuentas'] },
+      { label: 'Cuentas', icon: 'pi pi-wallet', routerLink: ['/home/accounts'] },
       { label: 'Transferencias', icon: 'pi pi-send', routerLink: ['/transferencias'] },
       { label: 'Bancos', icon: 'pi pi-warehouse', routerLink: ['/home/banks'] },
     ];

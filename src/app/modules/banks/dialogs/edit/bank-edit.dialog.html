@@ -2,14 +2,14 @@
   <label> Nombre </label>
   <input pInputText [(ngModel)]="name" placeholder="nombre"/>
 
-  <label> Teléfono </label>
+  <label> Telefono </label>
   <input pInputText [(ngModel)]="phone" placeholder="telefono"/>
 
-  <label> Email </label>
-  <input pInputText [(ngModel)]="mail" placeholder="Correo Electronico"/>
-
   <label> Direccion </label>
-  <input pInputText [(ngModel)]="address" placeholder="Direccion"/>
+  <input pInputText [(ngModel)]="address" placeholder="direccion"/>
+
+  <label> Correo Electronico </label>
+  <input pInputText [(ngModel)]="mail" placeholder="correo electronico"/>
 
   <div style="margin-top: auto;">
     <p-button label="Guardar" (click)="save()" ></p-button>

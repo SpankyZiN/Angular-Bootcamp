@@ -1,104 +1,59 @@
-import {Component, OnInit} from '@angular/core';
-import {TableModule} from 'primeng/table';
-import {AccountsTableComponent} from '../../components/customer-table/accounts-table.component';
-import {AccountsService} from '../../services/accounts.service';
-import {Button} from 'primeng/button';
-import {DialogService, DynamicDialogRef} from 'primeng/dynamicdialog';
-import {AccountsEditDialog} from '../../dialogs/edit/accounts-edit.dialog';
-import {ListEvent} from '../../../../shared/utils';
-import {MessageService} from 'primeng/api';
-import {BankEntity} from '../../store/accounts.api';
-import {BankAddDialog} from '../../dialogs/add/accounts-add.component';
+import { Component } from '@angular/core';
+import { TreeNode } from 'primeng/api';
+import { TreeTableModule } from 'primeng/treetable';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-bank-page',
-  imports: [
-    TableModule,
-    AccountsTableComponent,
-    Button
-  ],
-    providers: [AccountsService,
-      DialogService,
-      MessageService
-    ],
-  templateUrl: './accounts.page.component.html',
-  styleUrl: './accounts.page.component.css'
+  selector: 'app-accounts',
+  standalone: true,
+  imports: [CommonModule, TreeTableModule, ButtonModule, ToastModule],
+  providers: [MessageService],
+  templateUrl: './accounts.page.component.html'
 })
-export class AccountsPageComponent implements OnInit {
+export class AccountsComponent {
+  accounts: TreeNode[] = [];
 
-  listBanks: BankEntity[] = [];
-
-  ref: DynamicDialogRef | undefined;
-
-  constructor(private bankService: AccountsService,
-              private dialogService: DialogService,
-              private messageService: MessageService) {
-
-  }
+  constructor(private messageService: MessageService) {}
 
   ngOnInit() {
-    this.loadEntities();
-  }
-
-  onStartAddAction(event?: any) {
-    const data = {
-      header: 'Agregar Banco',
-      closable: true,
-      height: '50dvh',
-      width: '50dvh',
-      modal: true,
-    }
-    this.ref = this.dialogService.open(AccountsEditDialog, data);
-    this.ref.onClose.subscribe((result: any) => {
-        //this.listBanks.push(result);
-      }
-    )
-  }
-
-  onListAction(event: ListEvent) {
-    switch (event.type) {
-      case 'selected':
-        this.messageService.add(
-          {summary: `El objeto seleccionado \ ${event.value.name}`}
-        )
-        break;
-      case 'edit':
-        this.onEdit(event.value)
-        break;
-      case 'delete':
-        break
-      default:
-        break;
-    }
-
-  }
-
-
-  onEdit(value?: any) {
-    console.log('Editando Banco', value);
-    const data = {
-      data: {
-        customer: value,
-      },
-      header: 'Editar Banco',
-      closable: true,
-      height: '50dvh',
-      width: '50dvh',
-    }
-    this.dialogService.open(AccountsEditDialog, data)
-      .onClose
-      .subscribe((result: any) => {
-      })
-  }
-
-  loadEntities() {
-    this.bankService.getListBanks().subscribe(
+    this.accounts = [
       {
-        next: data => {
-          this.listBanks = <BankEntity[]>data
-        }
-      }
-    )
+        data: {
+          type: 'Caja de ahorro',
+          balance: 'Gs 12.500.000',
+        },
+        children: [
+          {
+            data: {
+              type: 'Transferencia a Juan Pérez',
+              balance: '- Gs 500.000',
+              date: '10/06/2025',
+            },
+          },
+          {
+            data: {
+              type: 'Depósito',
+              balance: '+ Gs 1.000.000',
+              date: '07/06/2025',
+            },
+          },
+        ],
+      },
+    ];
   }
 
+  transfer() {
+    this.messageService.add({ severity: 'info', summary: 'Transferencia', detail: 'Función transferir dinero activada' });
+  }
+
+  share() {
+    this.messageService.add({ severity: 'success', summary: 'Compartido', detail: 'Datos de cuenta compartidos' });
+  }
+
+  more() {
+    this.messageService.add({ severity: 'warn', summary: 'Más opciones', detail: 'Mostrando más opciones' });
+  }
 }

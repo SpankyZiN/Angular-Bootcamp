@@ -1,28 +1,26 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {InputText} from 'primeng/inputtext';
 import {Button} from 'primeng/button';
 import {FormsModule} from '@angular/forms';
-import { BankEntity } from '../../store/bank.api';
+import {BankEntity} from '../../store/bank.api';
 import {DynamicDialogConfig, DynamicDialogRef} from 'primeng/dynamicdialog';
 import {BankService} from '../../services/bank.service';
 
 @Component({
-  selector: 'app-customer-add',
-    standalone: true,
+  selector: 'app-bank-add',
   imports: [
     InputText,
     Button,
     FormsModule
   ],
   templateUrl: './bank-add.component.html',
-  styleUrl: './bank-add.component.css'
+  //styleUrl: './bank-add.component.css '
 })
 export class BankAddDialog {
 
+  // customer?: Customer;
   name?: string;
-  phone?: string;
-  mail?: number;
-  address?: string;
+  document?: string;
   id?: number;
 
   model : BankEntity ={
@@ -33,15 +31,15 @@ export class BankAddDialog {
   }
 
 
-  constructor(private dialogRef : DynamicDialogRef<BankAddDialog>,
-              private dialogConfig : DynamicDialogConfig,
+  constructor(private dialogRef: DynamicDialogRef<BankAddDialog>,
+              private dialogConfig: DynamicDialogConfig,
               private bankService: BankService,) {
-
-    this.assignValue(dialogConfig.data.customer);
 
   }
 
+
   save() {
+
     this.bankService.addBank(this.model).subscribe(
       {
         next: data => {
@@ -52,12 +50,11 @@ export class BankAddDialog {
     )
 
   }
-  assignValue(value : any){
+
+  assignValue(value: any) {
     this.id = value.id
     this.name = value.name;
-    this.phone = value.phone;
-    this.mail = value.mail;
-    this.address = value.address;
+    this.document = value.document;
   }
 
 }
