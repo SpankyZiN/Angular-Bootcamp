@@ -8,7 +8,6 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuModule } from 'primeng/menu';
 import {AppSecurityService} from '../../../services/security/app-security.service';
 import {FormsModule} from '@angular/forms';
-import {ProfileComponent} from '../../profile/profile/profile.component';
 
 @Component({
   selector: 'app-home',
@@ -46,7 +45,7 @@ export class HomeComponent{
   }
 
   goToProfile() {
-    this.router.navigate(['../profile/profile.component']).then(r => ProfileComponent);
+    
   }
 
 }

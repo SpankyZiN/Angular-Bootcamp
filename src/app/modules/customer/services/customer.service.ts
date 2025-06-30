@@ -1,28 +1,26 @@
-import {Injectable} from '@angular/core';
-import {Customer} from '../store/customer.api';
+import { Injectable } from "@angular/core";
+import { HttpClient }  from "@angular/common/http";
+import { Observable } from "rxjs";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CustomerService {
 
-  private customerList: Customer[] = [
-    {
-      id: 1,
-      name: 'Araceli',
-      document: '123456'
-    },
-    {
-      id: 2,
-      name: ' Osvaldo',
-      document: '123456'
-    },
-    {
-      id: 3,
-      name: 'Fabrizio',
-      document: '123456'
-    }
-  ]
+  private customerList: any[] = [];
 
-  get getCustomerList(): Customer[] {
+  constructor(private http: HttpClient) {}
+
+  getCustomers(): Observable<any> {
+    return this.http.get('http://54.173.20.225:8080/api/Customer');
+  }
+
+  saveCustomer(customer: any): Observable<any> {
+    return this.http.post('http://54.173.20.225:8080/api/Customer', customer);
+  }
+
+  get getCustomer(): any[] {
+    console.log("funciona")
     return this.customerList;
   }
 }

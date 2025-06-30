@@ -20,7 +20,7 @@ export class BankService {
   }
 
    getListBanks() {
-    try{
+    try{  
       return this.http.get(this.url + '/all');
     }catch (err) {
       return this.handleError(err as HttpErrorResponse);

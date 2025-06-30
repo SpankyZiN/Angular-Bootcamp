@@ -31,8 +31,6 @@ export class CustomerEditDialog {
     }
   }
 
-
-
   save(){
     let model : Customer = {
       id: this.id,

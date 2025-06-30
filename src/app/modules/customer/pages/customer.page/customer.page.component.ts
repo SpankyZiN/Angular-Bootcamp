@@ -27,9 +27,10 @@ import { CustomerService } from '../../services/customer.service';
 })
 export class CustomerPage implements OnInit {
 
-  customerList: Customer[] = [];
+  CustomerList: Customer[] = [];
 
   ref: DynamicDialogRef | undefined;
+  customerList: any;
 
   constructor(private customerService: CustomerService,
               private dialogService: DialogService,
@@ -37,69 +38,70 @@ export class CustomerPage implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.customerList = this.customerService.getCustomerList;
-  }
-
-  onStartAddAction(event?: any) {
-    const data = {
-      header: 'Agregar Cliente',
-      closable: true,
-      height: '50dvh',
-      width: '50dvh',
-      modal: true,
-          dismissableMask: true
-
-    }
-    this.ref = this.dialogService.open(CustomerEditDialog, data);
-    this.ref.onClose.subscribe((result: any) => {
-        this.customerList.push(result);
-      }
-    )
-  }
-
-  onListAction(event: ListEvent) {
-    switch (event.type) {
-      case 'selected':
-        console.log('Evento recibido:', event);
-        this.messageService.add(
-          {summary: `El objeto seleccionado \ ${event.value.name}`}
-        )
-        break;
-      case 'edit':
-        this.onEdit(event.value)
-        break;
-      case 'delete':
-        break
-      default:
-        break;
-    }
-
-  }
-
-
-  onEdit(value?: Customer) {
-    console.log('Editando cliente', value);
-    const data = {
-      data: {
-        customer: value,
-      },
-      header: 'Editar Cliente',
-      closable: true,
-      height: '50dvh',
-      width: '50dvh',
-    }
-    this.dialogService.open(CustomerEditDialog, data)
-      .onClose
-      .subscribe((result: any) => {
-        const newCustomerList = this.customerService.getCustomerList;
-        const newCustomer =  newCustomerList.find((customer) => customer.id === result.id);
-        if (newCustomer) {
-          newCustomer.id = result.id;
-          newCustomer.name = result.name;
-          newCustomer.document = result.document;
-        }
-      })
-  }
-
+ngOnInit(): void {
+  this.CustomerList = this.customerService.getCustomer;
 }
+
+
+   onStartAddAction(event?: any) {
+     const data = {
+       header: 'Agregar Cliente',
+       closable: true,
+       height: '50dvh',
+       width: '50dvh',
+       modal: true,
+           dismissableMask: true
+
+     }
+     this.ref = this.dialogService.open(CustomerEditDialog, data);
+     this.ref.onClose.subscribe((result: any) => {
+         this.customerList.push(result);
+       }
+     )
+   }
+
+   onListAction(event: ListEvent) {
+     switch (event.type) {
+       case 'selected':
+         console.log('Evento recibido:', event);
+         this.messageService.add(
+           {summary: `El objeto seleccionado \ ${event.value.name}`}
+         )
+         break;
+       case 'edit':
+         this.onEdit(event.value)
+         break;
+       case 'delete':
+         break
+       default:
+         break;
+     }
+
+   }
+
+
+   onEdit(value?: Customer) {
+     console.log('Editando cliente', value);
+     const data = {
+       data: {
+         customer: value,
+       },
+       header: 'Editar Cliente',
+       closable: true,
+       height: '50dvh',
+       width: '50dvh',
+     }
+     this.dialogService.open(CustomerEditDialog, data)
+       .onClose
+       .subscribe((result: any) => {
+         const newCustomerList = this.customerService.getCustomer;
+         const newCustomer =  newCustomerList.find((customer) => customer.id === result.id);
+         if (newCustomer) {
+           newCustomer.id = result.id;
+           newCustomer.name = result.name;
+           newCustomer.document = result.document;
+         }
+       })
+  }
+
+ }
